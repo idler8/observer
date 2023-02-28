@@ -8,7 +8,7 @@
 
 | 包名                 | 描述                  | 详细文档                                  |
 | -------------------- | --------------------- | ----------------------------------------- |
-| `@idler8/observer`   | 支持 ES3 的核心实现   | [传送门](./packages/core/README.md)       |
+| `@idler8/observer`   | 支持 ES3 的核心实现   | [传送门](./packages/observer/README.md)   |
 | `@idler8/form-react` | 支持 React 的嵌套表单 | [传送门](./packages/form-react/README.md) |
 
 ## 常用例子
@@ -76,3 +76,11 @@ ReactDOM.createRoot(document.getElelemtByID("root")).render(
   </Form>
 );
 ```
+
+### 更多用法可以参考测试用例
+
+- [Observer 核心基本用法](./packages/observer/__tests__/index.ts)
+- [Observer 核心嵌套数据](./packages/observer/__tests__/nest.ts)
+- [ReactObserver 基本用法](./packages/form-react/__tests__/index.tsx)
+- [ReactObserver 嵌套数据](./packages/form-react/__tests__/stack.tsx)
+- [ReactObserver 表单验证](./packages/form-react/__tests__/validator.tsx)
