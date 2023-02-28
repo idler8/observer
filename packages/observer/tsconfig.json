@@ -1,0 +1,11 @@
+{
+  "include": ["src/**/*", "__tests__/**/*"],
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "target": "ES3",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true
+  }
+}

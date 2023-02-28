@@ -1,0 +1,13 @@
+{
+  "name": "observer",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "yarn workspaces run jest",
+    "build": "yarn workspaces run build",
+    "package": "node scripts/package.js",
+    "publish-all": "yarn build && yarn package && yarn workspaces run publish"
+  }
+}

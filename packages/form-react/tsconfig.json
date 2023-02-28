@@ -1,0 +1,23 @@
+{
+  "include": ["src/**/*", "__tests__/**/*"],
+  "ts-node": {
+    "compilerOptions": {
+      "baseUrl": "./src",
+      "moduleResolution": "NodeNext",
+      "module": "NodeNext",
+      "target": "ES3",
+      "allowJs": true,
+      "allowSyntheticDefaultImports": true,
+      "jsx": "react-jsx"
+    }
+  },
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "target": "ES3",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx"
+  }
+}
