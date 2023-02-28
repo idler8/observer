@@ -20,7 +20,7 @@ function makePackageFile(project, packageJson) {
   }))
   fs.writeFileSync(path.resolve(npmPublishDir, 'README.md'), `
   ## 该项目来自Github Actions自动构建
-  更多说明请查看[Github仓库]("https://github.com/idler8/observer")
+  更多说明请查看[Github仓库](https://github.com/idler8/observer)
   `)
 }
 makePackageFile('observer', {
