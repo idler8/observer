@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest",
     "step-babel": "yarn babel src --out-dir libs/babel --extensions .tsx,.ts",
-    "step-rollup": "rollup -c",
     "step-tsc": "tsc --project tsconfig.production.json",
-    "build": "yarn step-babel && yarn step-rollup && yarn step-tsc",
+    "step-rollup": "rollup -c",
+    "build": "yarn step-babel && yarn step-tsc && yarn step-rollup",
     "publish": "cd libs/rollup && npm publish --access=public --registry https://registry.npmjs.org/"
   },
   "dependencies": {
@@ -30,6 +30,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^3.17.3",
+    "rollup-plugin-dts": "^5.2.0",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",

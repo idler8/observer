@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "include": ["src/**/*"],
   "compilerOptions": {
-    "outDir": "libs/rollup",
+    "outDir": "libs/typings",
     "emitDeclarationOnly": true,
     "declaration": true
   }
