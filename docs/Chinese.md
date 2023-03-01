@@ -1,6 +1,6 @@
 # 数据观察者(Observer)
 
-[English](./docs/English.md) | 中文
+[English](./English.md) | 中文
 
 使用发布/订阅模式的多层级数据管理机制
 
@@ -23,10 +23,10 @@
 
 ## 功能清单
 
-| 包名                 | 描述                  | 详细文档                                  |
-| -------------------- | --------------------- | ----------------------------------------- |
-| `@idler8/observer`   | 支持 ES3 的核心实现   | [传送门](./packages/observer/README.md)   |
-| `@idler8/form-react` | 支持 React 的嵌套表单 | [传送门](./packages/form-react/README.md) |
+| 包名                 | 描述                  | 详细文档                                   |
+| -------------------- | --------------------- | ------------------------------------------ |
+| `@idler8/observer`   | 支持 ES3 的核心实现   | [传送门](../packages/observer/README.md)   |
+| `@idler8/form-react` | 支持 React 的嵌套表单 | [传送门](../packages/form-react/README.md) |
 
 ## 安装方式
 
