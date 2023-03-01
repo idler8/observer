@@ -1,8 +1,23 @@
-# 数据观察者
+# 数据观察者(Observer)
 
 使用发布/订阅模式的多层级数据管理机制
 
 ## 作者：[闲人](https://github.com/idler8)
+
+- ### 特点：
+
+  - 简单：极少的代码内容，一眼看穿全部，打包后不到 1KB
+  - 健壮：使用 Typescript 开发，完整的类型描述，方便自动补完
+  - 安全：大量测试用例进行多场景覆盖
+  - 自由：满足你的所有自定义需要
+
+- ### 适用于：
+
+  - 对 ant-design 的表单设计不满意，需要高度自定义表单界面的同学
+  - 开发 React 时，需要设计嵌套表单的同学
+  - 想要模拟 Vue 双向绑定的同学
+  - 需要在不支持 ES5 的环境下开发数据表单的同学
+  - 需要灵活的数据储存结构的同学
 
 ## 功能清单
 
@@ -11,76 +26,28 @@
 | `@idler8/observer`   | 支持 ES3 的核心实现   | [传送门](./packages/observer/README.md)   |
 | `@idler8/form-react` | 支持 React 的嵌套表单 | [传送门](./packages/form-react/README.md) |
 
-## 常用例子
+## 安装方式
 
-### 核心库用法
-
-```javascript
-import { createRootObserver } from "@idler8/observer";
-const values = { formKey: { fieldKey: 1 } };
-const observer = createRootObserver(values);
-const formObserver = observer.checkout(["formKey"]);
-const fieldObserver = formObserver.checkout(["fieldKey"]);
-console.log(fieldObserver === observer.checkout(["formKey", "fieldKey"])); // true
-console.log(observer.get() === values); //true
-console.log(formObserver.get() === values.formKey); //true
-console.log(fieldObserver.get() === values.formKey.fieldKey); //true
-observer.addCallback(function (newValue) {
-  console.log("ROOT数据更新：", newValue);
-});
-formObserver.addCallback(function (newValue) {
-  console.log("Form数据更新：", newValue);
-});
-fieldObserver.addCallback(function (newValue) {
-  console.log("Field数据更新：", newValue);
-});
-formObserver.set({ fieldKey: 1 });
-// console.log -> ROOT数据更新：{formKey:{fieldKey:1}}
-// console.log -> Form数据更新：{fieldKey:1}
-formObserver.set({ fieldKey: 2 });
-// console.log -> ROOT数据更新：{formKey:{fieldKey:2}}
-// console.log -> Form数据更新：{fieldKey:2}
-// console.log -> Field数据更新：2
-console.log(values.formKey.fieldKey === 2); // true
+```
+yarn add @idler8/form-react
 ```
 
-### React 表单用法
-
-```javascript
-import { Form, useFieldReader, useFieldTrigger } from "@idler8/form-react";
-const Input = ({ value = "", onChange }) => (
-  <input value={value} onChange={(e) => onChange?.(e.target.value)} />
-);
-const Field = ({ name }) => {
-  const value = useFieldReader(name);
-  const onChange = useFieldTrigger(name);
-  return <Input value={value} onChange={onChange} />;
-};
-const Fields = () => {
-  const value = useFieldReader();
-  const onChange = useFieldTrigger();
-  useEffect(() => {
-    onChange({ formKey: { fieldKey: 2 } });
-  }, []);
-  return (
-    <div>
-      <div>{JSON.stringify(value)}</div>
-      <Field name={["formKey", "fieldKey"]} />
-    </div>
-  );
-};
-
-ReactDOM.createRoot(document.getElelemtByID("root")).render(
-  <Form>
-    <Fields />
-  </Form>
-);
+```
+npm install @idler8/form-react
 ```
 
-### 更多用法可以参考测试用例
+### 使用文档
 
-- [Observer 核心基本用法](./packages/observer/__tests__/index.ts)
-- [Observer 核心嵌套数据](./packages/observer/__tests__/nest.ts)
-- [ReactObserver 基本用法](./packages/form-react/__tests__/index.tsx)
-- [ReactObserver 嵌套数据](./packages/form-react/__tests__/stack.tsx)
-- [ReactObserver 表单验证](./packages/form-react/__tests__/validator.tsx)
+- 核心库
+  - 基本用法
+  - 嵌套结构
+  - 订阅与发布
+- React 表单
+  - 基本用法
+  - 嵌套结构
+  - 表单验证
+
+## 归档预告
+
+本品正在尝试开源，上线时间为 2023-03-01，在 2023-06-01 之前不能获得用户认可，收到 20 个星星，作者将会归档本项目。  
+在此期间，作者会积极维护本产品，欢迎体验。
