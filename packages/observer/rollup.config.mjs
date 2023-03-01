@@ -1,5 +1,7 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import dts from 'rollup-plugin-dts'
+import dts from 'rollup-plugin-dts';
+import terser from '@rollup/plugin-terser';
+
 export default [{
   cache: false,
   input: "libs/babel/index.js",
@@ -8,7 +10,7 @@ export default [{
     file: "libs/rollup/index.js",
     format: 'umd'
   },
-  plugins: [nodeResolve({ modulePaths: ['libs/babel'], moduleDirectories: [] })]
+  plugins: [nodeResolve({ modulePaths: ['libs/babel'], moduleDirectories: [] }), terser()]
 }, {
   input: "libs/typings/index.d.ts",
   output: [{ file: "libs/rollup/index.d.ts", format: "es" }],

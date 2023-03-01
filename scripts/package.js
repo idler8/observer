@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const version = (process.env.GITHUB_REF || 'v0.0.1-0').replace("refs/tags/", "");
 function makePackageFile(project, packageJson) {
-  const npmPublishDir = path.resolve(__dirname, '../packages/' + project + '/libs/rollup')
+  const rootPublishDir = path.resolve(__dirname, '..');
+  const npmPublishDir = path.resolve(rootPublishDir, 'packages/' + project + '/libs/rollup')
   fs.writeFileSync(path.resolve(npmPublishDir, 'package.json'), JSON.stringify({
     name: "@idler8/" + project,
     version: version,
@@ -22,6 +23,7 @@ function makePackageFile(project, packageJson) {
   ## 该项目来自Github Actions自动构建
   更多说明请查看[Github仓库](https://github.com/idler8/observer)
   `)
+  fs.copyFileSync(path.resolve(rootPublishDir, 'LICENSE'), path.resolve(npmPublishDir, 'LICENSE'))
 }
 makePackageFile('observer', {
   keywords: [
