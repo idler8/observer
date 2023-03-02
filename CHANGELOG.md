@@ -1,3 +1,12 @@
+## <small>1.1.3 (2023-03-02)</small>
+
+- fixed: 修正 FKey 错误引用 Fkey 造成的测试失败 ([3b358a2](https://github.com/idler8/observer/commit/3b358a2))
+
+## <small>1.1.2 (2023-03-02)</small>
+
+- ci: 测试前清空缓存 ([be30f52](https://github.com/idler8/observer/commit/be30f52))
+- docs: 更新文档 ([35046f8](https://github.com/idler8/observer/commit/35046f8))
+
 ## <small>1.1.1 (2023-03-02)</small>
 
 - chore: 调整锁定 yarn 版本 ([10b3ed8](https://github.com/idler8/observer/commit/10b3ed8))
