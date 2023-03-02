@@ -1,7 +1,7 @@
 import { useObserver } from "Form/index";
 import { useCallback, useEffect, useState } from "react";
 import { mergeDependencyList, transformKeys } from "FKeys/index";
-import type { Keys } from 'Fkeys/index'
+import type { Keys } from 'FKeys/index'
 
 
 export function useFieldReader<V = any>(keys?: Keys) {
