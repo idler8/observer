@@ -7,7 +7,11 @@
   "scripts": {
     "test": "yarn workspaces run jest",
     "build": "yarn workspaces run build",
+    "changed": "conventional-changelog -p jslint -i CHANGELOG.md -s",
     "package": "node scripts/package.js",
     "publish-all": "yarn build && yarn package && yarn workspaces run publish"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^2.2.2"
   }
 }
