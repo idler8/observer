@@ -5,7 +5,7 @@ export type Keys = Key[] | Key;
 export function transformKeys(keys?: Keys) {
   return keys ? (keys instanceof Array ? keys : [keys]) : [];
 }
-export function mergeDependencyList(keys, ...deps: any[]) {
+export function mergeDependencyList(keys?: Keys, ...deps: any[]) {
   return keys
     ? keys instanceof Array
       ? [...keys, ...deps]
