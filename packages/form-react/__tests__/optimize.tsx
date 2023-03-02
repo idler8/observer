@@ -2,13 +2,13 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useEffect, useState } from "react";
 import { Form, useObserver } from "index";
-import { mergeDependencyList } from "Process/index";
+import { mergeDependencyList } from "FKeys/index";
 
 test("刷新次数检测", async () => {
   const handleValue = { tick: 0 };
   function OKeys({ keys, tick }) {
     const observer = useObserver();
-    const deps = mergeDependencyList(observer, keys);
+    const deps = mergeDependencyList(keys, observer);
     useEffect(() => {
       handleValue.tick += 1;
     }, deps);
