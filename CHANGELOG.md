@@ -1,3 +1,10 @@
+## <small>1.1.1 (2023-03-02)</small>
+
+- chore: 调整锁定 yarn 版本 ([10b3ed8](https://github.com/idler8/observer/commit/10b3ed8))
+- refactor: 精简未使用的变量引用 ([c47d9bd](https://github.com/idler8/observer/commit/c47d9bd))
+- refactor: 提取 type 引用 ([e86651d](https://github.com/idler8/observer/commit/e86651d))
+- docs: 更新 CHANGELOG ([f03c5bb](https://github.com/idler8/observer/commit/f03c5bb))
+
 ## 1.1.0 (2023-03-02)
 
 - test: 给 useFieldState 增加用例 ([402277d](https://github.com/idler8/observer/commit/402277d))
