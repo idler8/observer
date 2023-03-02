@@ -1,5 +1,6 @@
 {
   "name": "observer",
+  "packageManager": "yarn@1.22.19",
   "private": true,
   "workspaces": [
     "packages/*"
