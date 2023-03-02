@@ -21,6 +21,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: yarn install
+      - run: yarn test --clearCache
       - run: yarn test
       - run: yarn publish-all
         env:
