@@ -8,10 +8,10 @@ import {
   useKeys,
   useFieldReader,
   useFieldTrigger,
-  Keys,
 } from "index";
 import { useEffect } from "react";
-import { Observer } from "../../observer/src/index";
+import type { Keys } from "index";
+import type { Observer } from "@idler8/observer";
 
 test("基本渲染：React", async () => {
   render(
