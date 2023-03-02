@@ -28,10 +28,8 @@ export function useFormValidator() {
     return values;
   }, [validators, observer]);
 }
-export function useRuleValidator(
-  validator: (context: any, deps: Key[]) => any,
-  keys?: Keys
-) {
+export type Valid = (context: any, deps: Key[]) => string;
+export function useRuleValidator(validator?: Valid, keys?: Keys) {
   const observer = useObserver();
   const validators = useContext(Context);
   const [throwable, setThrowable] = useState<string | undefined>();
@@ -39,7 +37,7 @@ export function useRuleValidator(
   useEffect(() => {
     return validators.addCallback(async (context) => {
       try {
-        const response = await validator(context, transformKeys(keys));
+        const response = await validator?.(context, transformKeys(keys));
         if (response) throw response;
       } catch (e) {
         setThrowable(e);
