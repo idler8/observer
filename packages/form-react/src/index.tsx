@@ -1,10 +1,5 @@
 import { Form, useObserver } from "Form/index";
-import {
-  Validator,
-  useFormValidator,
-  useRuleValidator,
-  Valid,
-} from "Validator/index";
+import { Validator, useFormValidator, useRuleValidator } from "Validator/index";
 import { useFieldReader, useFieldTrigger } from "Process/index";
 import { FKeys, useKeys } from "FKeys/index";
 
@@ -19,9 +14,9 @@ export {
   useFieldReader,
   useFieldTrigger,
 };
-
+import { Valid } from "Validator/index";
 import type { Key, Keys } from "FKeys/index";
-export type { Key, Keys };
+export type { Key, Keys, Valid };
 export function FormValidator({ children }) {
   return (
     <Form>
