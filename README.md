@@ -38,7 +38,53 @@ yarn add @idler8/form-react
 npm install @idler8/form-react
 ```
 
-### 使用文档
+```html
+<script src="https://unpkg.com/@idler8/observer"></script>
+```
+
+## 基本用例
+
+```javascript
+import Form, { useFieldState, useFormValidator } from "@idler8/form-react";
+function isSuccess(values, keys) {
+  const value = keys.reduce(function (prev, key) {
+    return prev?.[key];
+  }, values);
+  if (value !== "Success") return keys.join(".") + " not Success";
+}
+function CustomInput({ name }) {
+  const [value, onChange, errResponse] = useFieldState(name, isSuccess);
+  if (errResponse) return <div>Error：{errResponse}</div>;
+  return (
+    <input value={value || ""} onChange={(e) => onChange(e.target.value)} />
+  );
+}
+function Validator() {
+  const validator = useFormValidator();
+  const handleSubmit = () => {
+    validator()
+      .then((values) => {
+        console.log("表单数据：", JSON.stringify(values));
+      })
+      .catch((errors) => {
+        console.log("出错了,错误信息是：", JSON.stringify(errors));
+        // ["formKey.formFieldKey not Success"]
+      });
+  };
+  return <button onClick={handleSubmit}>验证数据</button>;
+}
+function PageComponent() {
+  return (
+    <Form>
+      <CustomInput name="fieldKey" />
+      <CustomInput name={["formKey", "formFieldKey"]} />
+      <Validator />
+    </Form>
+  );
+}
+```
+
+## 使用文档
 
 - 核心库
   - 基本用法
