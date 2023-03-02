@@ -5,7 +5,13 @@ export type Keys = Key[] | Key;
 export function transformKeys(keys?: Keys) {
   return keys ? (keys instanceof Array ? keys : [keys]) : [];
 }
-
+export function mergeDependencyList(keys, ...deps: any[]) {
+  return keys
+    ? keys instanceof Array
+      ? [...keys, ...deps]
+      : [keys, ...deps]
+    : [...deps];
+}
 const Context = createContext<Key[]>([]);
 export function FKeys({ name, children }: { name: Keys; children: ReactNode }) {
   const keys = useKeys(name);

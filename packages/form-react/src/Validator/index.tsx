@@ -1,5 +1,5 @@
 import { useObserver } from "Form/index";
-import { transformKeys } from "FKeys/index";
+import { mergeDependencyList, transformKeys } from "FKeys/index";
 import type { Keys, Key } from "FKeys/index";
 import {
   createContext,
@@ -44,14 +44,13 @@ export function useRuleValidator(validator?: Valid, keys?: Keys) {
         return e;
       }
     });
-  }, [validators, validator, keys]);
+  }, mergeDependencyList(keys, validator, validators));
 
   useEffect(() => {
     if (!observer) return;
-    const deps = transformKeys(keys);
-    return observer.addWatcher(deps, () => {
+    return observer.addWatcher(transformKeys(keys), () => {
       setThrowable(undefined);
     });
-  }, [observer, keys]);
+  }, mergeDependencyList(keys, observer));
   return throwable;
 }
