@@ -18,3 +18,10 @@ it('数组变化', function () {
   expect(observer.checkout(['formKey']).get()).toEqual([['Value-0'], ['Value-1']])
   expect(observer.checkout(['formKey', 1]).get()).toEqual(['Value-1'])
 })
+it('checkout时，键类型为数字，应该生成Array而不是Object', function () {
+  const observer = createRootObserver({});
+  observer.checkout(['arrayKey', 0]).set('array item 1');
+  expect(observer.checkout(['arrayKey']).get()).toEqual(['array item 1'])
+  observer.checkout(['objectKey', "0"]).set('object item 1');
+  expect(observer.checkout(['objectKey']).get()).toEqual({ "0": "object item 1" })
+})

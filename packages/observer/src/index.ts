@@ -60,7 +60,9 @@ export function createObserver<V = any>(options: { key: Key, parent?: Observer, 
       if (parent) {
         const parentValue = parent.dataGet();
         if (typeof parentValue !== 'object') {
-          parent.dataSet({ [key]: value })
+          const pValue = typeof key === 'number' ? [] : {};
+          pValue[key] = value
+          parent.dataSet(pValue)
         } else {
           parentValue[key] = value
         }
