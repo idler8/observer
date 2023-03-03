@@ -10,7 +10,8 @@ export default [{
     file: "libs/rollup/index.js",
     format: 'umd',
     globals: {
-      react: 'React'
+      react: 'React',
+      '@idler8/observer': 'Observer'
     },
   },
   plugins: [nodeResolve({ modulePaths: ['libs/babel'], moduleDirectories: [] }), terser()]
