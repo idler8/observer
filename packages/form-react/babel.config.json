@@ -9,12 +9,5 @@
       }
     ]
   ],
-  "plugins": [
-    [
-      "@babel/plugin-transform-react-jsx",
-      {
-        "runtime": "automatic" // defaults to classic
-      }
-    ]
-  ]
+  "plugins": [["@babel/plugin-transform-react-jsx"]]
 }
