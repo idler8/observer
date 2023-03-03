@@ -8,7 +8,10 @@ export default [{
   output: {
     name: 'ReactObserver',
     file: "libs/rollup/index.js",
-    format: 'umd'
+    format: 'umd',
+    globals: {
+      react: 'React'
+    },
   },
   plugins: [nodeResolve({ modulePaths: ['libs/babel'], moduleDirectories: [] }), terser()]
 }, {
