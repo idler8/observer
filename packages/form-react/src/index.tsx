@@ -16,6 +16,7 @@ export {
 };
 import { Valid } from "Validator/index";
 import type { Key, Keys } from "FKeys/index";
+import { forwardRef } from "react";
 export type { Key, Keys, Valid };
 export function FormValidator({ children }) {
   return (
@@ -29,4 +30,23 @@ export function useFieldState(keys?: Keys, validator?: Valid) {
   const onChange = useFieldTrigger(keys);
   const errResponse = useRuleValidator(validator, keys);
   return [value, onChange, errResponse];
+}
+export function forwardForm(Component, hasValidator) {
+  return hasValidator
+    ? function FormValidatorForward(props) {
+        return (
+          <Form>
+            <Validator>
+              <Component {...props} />
+            </Validator>
+          </Form>
+        );
+      }
+    : function FormForward(props) {
+        return (
+          <Form>
+            <Component {...props} />
+          </Form>
+        );
+      };
 }
