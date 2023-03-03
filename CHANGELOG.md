@@ -1,3 +1,8 @@
+## <small>1.1.5 (2023-03-03)</small>
+
+- fixed: 打包时 @idler8/observer 应该引用 Observer 而不是 observer ([cd429af](https://github.com/idler8/observer/commit/cd429af))
+- docs: 文档更新 ([668d5cc](https://github.com/idler8/observer/commit/668d5cc))
+
 ## <small>1.1.4 (2023-03-03)</small>
 
 - fixed: 打包时 react 应该引用 React 而不是 react ([7ecdc62](https://github.com/idler8/observer/commit/7ecdc62))
