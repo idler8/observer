@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/@idler8/observer"></script>
+  </head>
+
+  <body>
+    <div>调试</div>
+    <div id="debug"></div>
+    <hr />
+    <div>学校信息</div>
+    <div>
+      <label>学校名称：</label>
+      <input id="school" />
+    </div>
+    <div>班级列表</div>
+    <div id="classes">
+      <div>
+        <label>班级1：</label>
+        <input id="classes_0_name" />
+      </div>
+    </div>
+    <button id="new_class">新增班级</button>
+    <script>
+      const observer = Observer.createRootObserver({
+        school: "SchoolName",
+        classes: [{ name: "ClassName" }],
+      });
+      const debug = document.getElementById("debug");
+      debug.innerText = JSON.stringify(observer.get());
+      observer.addCallback(function (value) {
+        debug.innerText = JSON.stringify(value);
+      });
+      function bindInputElement(input, name) {
+        const theObserver = observer.checkout(name);
+        input.value = theObserver.get() || "";
+        theObserver.addCallback(function (value) {
+          input.value = value || "";
+        });
+        input.oninput = function (e) {
+          theObserver.set(e.target.value);
+        };
+      }
+      bindInputElement(document.getElementById("school"), ["school"]);
+      bindInputElement(document.getElementById("classes_0_name"), [
+        "classes",
+        0,
+        "name",
+      ]);
+      document.getElementById("new_class").onclick = function () {
+        const classes = document.getElementById("classes");
+        const classNumber = classes.children.length;
+        const clsContainer = document.createElement("div");
+        const label = document.createElement("label");
+        label.innerText = `班级${classNumber + 1}：`;
+        const input = document.createElement("input");
+        bindInputElement(input, ["classes", classNumber, "name"]);
+        clsContainer.appendChild(label);
+        clsContainer.appendChild(input);
+        classes.appendChild(clsContainer);
+      };
+    </script>
+  </body>
+</html>
