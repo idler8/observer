@@ -1,3 +1,11 @@
+## <small>1.1.4 (2023-03-03)</small>
+
+- fixed: 打包时 react 应该引用 React 而不是 react ([7ecdc62](https://github.com/idler8/observer/commit/7ecdc62))
+- feat: 数组类型自动生成 ([aad812c](https://github.com/idler8/observer/commit/aad812c))
+- docs: 更新文档 ([8da20e1](https://github.com/idler8/observer/commit/8da20e1))
+- docs: 首页文档上补充一个基础用例 ([f337a7e](https://github.com/idler8/observer/commit/f337a7e))
+- chore: 增加 DS_Store 忽略 ([3ce62eb](https://github.com/idler8/observer/commit/3ce62eb))
+
 ## <small>1.1.3 (2023-03-02)</small>
 
 - fixed: 修正 FKey 错误引用 Fkey 造成的测试失败 ([3b358a2](https://github.com/idler8/observer/commit/3b358a2))
