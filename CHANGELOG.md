@@ -1,3 +1,7 @@
+## <small>1.1.6 (2023-03-03)</small>
+
+- chore: 去除 jsxRuntime ([c5a0cc8](https://github.com/idler8/observer/commit/c5a0cc8))
+
 ## <small>1.1.5 (2023-03-03)</small>
 
 - fixed: 打包时 @idler8/observer 应该引用 Observer 而不是 observer ([cd429af](https://github.com/idler8/observer/commit/cd429af))
