@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link
+      href="https://unpkg.com/antd@5.2.3/dist/reset.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://unpkg.com/dayjs@1.11.7/dayjs.min.js"></script>
+    <script src="https://unpkg.com/antd@5.2.3/dist/antd.min.js"></script>
+    <script src="https://unpkg.com/@idler8/observer@1.2.0"></script>
+    <script src="https://unpkg.com/@idler8/form-react@1.2.0"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const {
+        FormValidator,
+        useFieldState,
+        useFieldReader,
+        useFieldTrigger,
+        useFormValidator,
+        forwardForm,
+      } = ReactObserver;
+      const { Space, Card, Input, Button } = antd;
+      //这是个验证函数，验证当前字段值是Success
+      function isSuccess(values, keys) {
+        const value = keys.reduce(function (prev, key) {
+          return prev?.[key];
+        }, values);
+        if (value !== "Success") return keys.join(".") + " not Success";
+      }
+      // 自己造一个UI样式
+      function CustomInput({ name, label, rule }) {
+        console.log("CustomInput render");
+        const [value, onChange, errResponse] = useFieldState(name, rule);
+        return (
+          <>
+            <div>{label}</div>
+            <Input
+              value={value || ""}
+              onChange={(e) => onChange(e.target.value)}
+            />
+            {errResponse && <div style={{ color: "red" }}>{errResponse}</div>}
+          </>
+        );
+      }
+      // 尝试一下列表
+      function Classes() {
+        console.log("Classes render");
+        const classes = useFieldReader("classes");
+        const onChange = useFieldTrigger("classes");
+        // 增加memo后，对classes内容不再敏感
+        const inputs = React.useMemo(
+          () =>
+            classes?.map(function (cls, index) {
+              return (
+                <CustomInput
+                  key={index}
+                  name={["classes", index, "name"]}
+                  label={"班级" + (index + 1)}
+                  rule={isSuccess}
+                />
+              );
+            }),
+          [classes?.length]
+        );
+        return (
+          <>
+            {inputs}
+            <Button onClick={() => onChange((classes) => [...classes, {}])}>
+              增加班级
+            </Button>
+          </>
+        );
+      }
+      function Debug() {
+        console.log("Debug render");
+        const values = useFieldReader();
+        return <Card title="DEBUG">{JSON.stringify(values)}</Card>;
+      }
+      //这里拿一个表单
+      const MyApp = forwardForm(function MyForm() {
+        console.log("MyForm render");
+        const validator = useFormValidator();
+        const handleSubmit = () => {
+          validator()
+            .then((values) => {
+              console.log("表单数据：", JSON.stringify(values));
+              alert(JSON.stringify(values));
+            })
+            .catch((errors) => {
+              console.log("出错了,错误信息是：", JSON.stringify(errors));
+            });
+        };
+        const onChange = useFieldTrigger();
+        React.useEffect(function () {
+          onChange({ school: "SchoolName", classes: [{ name: "ClassName" }] });
+        }, []);
+        return (
+          <Space direction="vertical" style={{ margin: 20 }}>
+            <Debug />
+            <Card title="学校">
+              <CustomInput name="school" label="学校名称" />
+              <Classes />
+              <Button onClick={handleSubmit}>验证数据</Button>
+            </Card>
+          </Space>
+        );
+      }, true);
+
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(<MyApp />);
+    </script>
+  </body>
+</html>
