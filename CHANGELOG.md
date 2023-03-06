@@ -1,11 +1,25 @@
+## 1.3.0 (2023-03-06)
+
+- test: 给 HOC 函数增加测试用例子 ([2d3117b](https://github.com/idler8/observer/commit/2d3117b))
+- feat: 增加 withInput 并调整 HOC 函数到单独目录 ([bfcc0ad](https://github.com/idler8/observer/commit/bfcc0ad))
+- docs: 增加一个 memo 例子 ([b6bf48f](https://github.com/idler8/observer/commit/b6bf48f))
+
+## 1.2.0 (2023-03-03)
+
+- feat: 增加 forwardForm 函数，快捷建立表单上下文 ([17246cd](https://github.com/idler8/observer/commit/17246cd))
+- docs: 文档更新 ([3c19d13](https://github.com/idler8/observer/commit/3c19d13))
+- docs: 增加两个入门例子 ([cd2f432](https://github.com/idler8/observer/commit/cd2f432))
+
 ## <small>1.1.6 (2023-03-03)</small>
 
+- feat: 文档更新 ([c5b48a3](https://github.com/idler8/observer/commit/c5b48a3))
 - chore: 去除 jsxRuntime ([c5a0cc8](https://github.com/idler8/observer/commit/c5a0cc8))
 
 ## <small>1.1.5 (2023-03-03)</small>
 
-- fixed: 打包时 @idler8/observer 应该引用 Observer 而不是 observer ([cd429af](https://github.com/idler8/observer/commit/cd429af))
+- docs: 文档更新 ([0169377](https://github.com/idler8/observer/commit/0169377))
 - docs: 文档更新 ([668d5cc](https://github.com/idler8/observer/commit/668d5cc))
+- fixed: 打包时 @idler8/observer 应该引用 Observer 而不是 observer ([643c4b1](https://github.com/idler8/observer/commit/643c4b1))
 
 ## <small>1.1.4 (2023-03-03)</small>
 
