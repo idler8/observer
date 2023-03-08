@@ -1,3 +1,8 @@
+## 1.3.2 (2023-03-08)
+
+- chore: 使用 jsxRuntime ([de10885](https://github.com/idler8/observer/commit/de10885))
+- docs: CHANGELOG ([dbf3b1f](https://github.com/idler8/observer/commit/dbf3b1f))
+
 ## 1.3.1 (2023-03-08)
 
 - docs: 文档增加 badge ([9bf5e43](https://github.com/idler8/observer/commit/9bf5e43))
