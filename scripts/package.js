@@ -17,6 +17,7 @@ function makePackageFile(project, packageJson) {
       "type": "git",
       "url": "https://github.com/idler8/observer"
     },
+    license: "MIT",
     ...packageJson
   }))
   fs.writeFileSync(path.resolve(npmPublishDir, 'README.md'), `
