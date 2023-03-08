@@ -4,6 +4,8 @@
 
 使用发布/订阅模式的多层级数据管理机制
 
+![Github Build Status](https://github.com/idler8/observer/actions/workflows/npm-publish.yml/badge.svg)
+
 ## 作者：[闲人](https://github.com/idler8)
 
 - ### 特点：
@@ -23,10 +25,10 @@
 
 ## 功能清单
 
-| 包名                 | 描述                  | 详细文档                                  |
-| -------------------- | --------------------- | ----------------------------------------- |
-| `@idler8/observer`   | 支持 ES3 的核心实现   | [传送门](./packages/observer/README.md)   |
-| `@idler8/form-react` | 支持 React 的嵌套表单 | [传送门](./packages/form-react/README.md) |
+| 包名                 | 描述                  | 健壮性                                                    | 下载量                                                | 详细文档                                  |
+| -------------------- | --------------------- | --------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------- |
+| `@idler8/observer`   | 支持 ES3 的核心实现   | ![types](https://badgen.net/npm/types/@idler8/observer)   | ![size](https://badgen.net/npm/dt/@idler8/observer)   | [传送门](./packages/observer/README.md)   |
+| `@idler8/form-react` | 支持 React 的嵌套表单 | ![types](https://badgen.net/npm/types/@idler8/form-react) | ![size](https://badgen.net/npm/dt/@idler8/form-react) | [传送门](./packages/form-react/README.md) |
 
 ## 安装方式
 
