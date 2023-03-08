@@ -1,3 +1,9 @@
+## 1.3.1 (2023-03-08)
+
+- docs: 文档增加 badge ([9bf5e43](https://github.com/idler8/observer/commit/9bf5e43))
+- docs: CHANGELOG ([479ba7c](https://github.com/idler8/observer/commit/479ba7c))
+- chore: 增加 license 描述 ([0afd8c4](https://github.com/idler8/observer/commit/0afd8c4))
+
 ## 1.3.0 (2023-03-06)
 
 - test: 给 HOC 函数增加测试用例子 ([2d3117b](https://github.com/idler8/observer/commit/2d3117b))
