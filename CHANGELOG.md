@@ -1,3 +1,7 @@
+## 1.3.3 (2023-03-16)
+
+- feat: hoc 中继承 FKey ([fa19087](https://github.com/idler8/observer/commit/fa19087))
+
 ## 1.3.2 (2023-03-08)
 
 - chore: 使用 jsxRuntime ([de10885](https://github.com/idler8/observer/commit/de10885))
