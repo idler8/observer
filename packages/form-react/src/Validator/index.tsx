@@ -19,14 +19,20 @@ export function Validator({ children }: { children: ReactNode }) {
 export function useFormValidator() {
   const observer = useObserver();
   const validators = useContext(Context);
-  return useCallback(async () => {
-    if (!observer) return;
-    const values = observer.get();
-    const anyResponse = await Promise.all(validators.calls(values));
-    const anyFailResponse = anyResponse.filter(Boolean);
-    if (anyFailResponse.length > 0) throw anyFailResponse;
-    return values;
-  }, [validators, observer]);
+  return useCallback(
+    async (includeRule?: Valid[]) => {
+      if (!observer) return;
+      const values = observer.get();
+      const theValidators = includeRule
+        ? validators.filter((callback) => includeRule.includes(callback))
+        : validators;
+      const anyResponse = await Promise.all(theValidators.calls(values));
+      const anyFailResponse = anyResponse.filter(Boolean);
+      if (anyFailResponse.length > 0) throw anyFailResponse;
+      return values;
+    },
+    [validators, observer]
+  );
 }
 export type Valid = (context: any, deps: Key[]) => string;
 export function useRuleValidator(validator?: Valid, keys?: Keys) {

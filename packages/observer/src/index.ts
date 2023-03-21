@@ -2,10 +2,12 @@ export type Key = string | number
 export type Callback<V = any> = (value: V) => any
 export type UnListener = () => void;
 export type Listener<C = Callback<any>> = (callback: C) => UnListener
+export type Filter = (value: any, index: number, array: any[]) => boolean
 export type Callbacks<V> = {
   addCallback: (callback: Callback<V>) => UnListener,
   removeCallback: (callback: Callback<V>) => void,
-  calls: Callback<V>
+  calls: Callback<V>,
+  filter: (filter: Filter) => Callbacks<V>
 }
 export type Observer<V = any> = {
   keyCheck: (key: Key) => boolean,
@@ -29,8 +31,7 @@ export type Source<V = any> = {
 export type createChildObserver<V = any> = (key: Key, parent: Observer) => Observer<V>
 export type createRootObserver<V = any> = (data: V) => Observer<V>
 
-export function createCallbacks<V = any>(): Callbacks<V> {
-  const callbacks: Callback<V>[] = [];
+export function createCallbacks<V = any>(callbacks: Callback<V>[] = []): Callbacks<V> {
   const removeCallback = (callback: Callback<V>) => {
     const index = callbacks.indexOf(callback)
     if (index === -1) return;
@@ -43,7 +44,10 @@ export function createCallbacks<V = any>(): Callbacks<V> {
   const calls = (value: V) => {
     return callbacks.map(callback => callback(value))
   }
-  return { addCallback, removeCallback, calls }
+  const filter = (filter: Filter) => {
+    return createCallbacks<V>(callbacks.filter(filter));
+  }
+  return { addCallback, removeCallback, calls, filter }
 }
 export function createObserver<V = any>(options: { key: Key, parent?: Observer, data?: any }): Observer<V> {
   const { key, parent } = options;
