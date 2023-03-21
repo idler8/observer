@@ -1,3 +1,7 @@
+## 1.4.0 (2023-03-21)
+
+- feat: 允许部分验证 ([6f89a9a](https://github.com/idler8/observer/commit/6f89a9a))
+
 ## 1.3.3 (2023-03-16)
 
 - feat: hoc 中继承 FKey ([fa19087](https://github.com/idler8/observer/commit/fa19087))
