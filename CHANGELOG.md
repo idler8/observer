@@ -1,3 +1,7 @@
+## 1.4.2 (2023-03-21)
+
+- fixed: 挂载原始验证函数用于过滤 ([348e1ab](https://github.com/idler8/observer/commit/348e1ab))
+
 ## 1.4.1 (2023-03-21)
 
 - fixed: 允许异步验证和空输出 ([0469e67](https://github.com/idler8/observer/commit/0469e67))
