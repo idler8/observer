@@ -1,3 +1,7 @@
+## 1.4.1 (2023-03-21)
+
+- fixed: 允许异步验证和空输出 ([0469e67](https://github.com/idler8/observer/commit/0469e67))
+
 ## 1.4.0 (2023-03-21)
 
 - feat: 允许部分验证 ([6f89a9a](https://github.com/idler8/observer/commit/6f89a9a))
