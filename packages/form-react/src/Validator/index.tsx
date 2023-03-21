@@ -29,7 +29,9 @@ export function useFormValidator() {
       if (!observer) return;
       const values = observer.get();
       const theValidators = includeRule
-        ? validators.filter((callback) => includeRule.includes(callback))
+        ? validators.filter((callback) =>
+            includeRule.includes(callback.original)
+          )
         : validators;
       const anyResponse = await Promise.all(theValidators.calls(values));
       const anyFailResponse = anyResponse.filter(Boolean);
@@ -45,7 +47,7 @@ export function useRuleValidator(validator?: Valid, keys?: Keys) {
   const [throwable, setThrowable] = useState<string | undefined>();
 
   useEffect(() => {
-    return validators.addCallback(async (context) => {
+    const theValidator = async (context: any) => {
       try {
         const response = await validator?.(context, transformKeys(keys));
         if (response) throw response;
@@ -53,7 +55,9 @@ export function useRuleValidator(validator?: Valid, keys?: Keys) {
         setThrowable(e);
         return e;
       }
-    });
+    };
+    theValidator.original = validator;
+    return validators.addCallback(theValidator);
   }, mergeDependencyList(keys, validator, validators));
 
   useEffect(() => {
