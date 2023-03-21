@@ -12,6 +12,11 @@ import {
 import type { ReactNode } from "react";
 import { createCallbacks } from "@idler8/observer";
 const Context = createContext(createCallbacks());
+
+export type Valid = (
+  context: any,
+  deps: Key[]
+) => string | undefined | null | Promise<string | undefined | null>;
 export function Validator({ children }: { children: ReactNode }) {
   const validators = useMemo(() => createCallbacks(), []);
   return <Context.Provider value={validators}>{children}</Context.Provider>;
@@ -34,7 +39,6 @@ export function useFormValidator() {
     [validators, observer]
   );
 }
-export type Valid = (context: any, deps: Key[]) => string;
 export function useRuleValidator(validator?: Valid, keys?: Keys) {
   const observer = useObserver();
   const validators = useContext(Context);
