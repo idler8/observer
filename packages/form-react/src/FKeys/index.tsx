@@ -20,6 +20,7 @@ export function FKeys({ name, children }: { name: Keys; children: ReactNode }) {
 export function useKeys(keys?: Keys) {
   const prevKeys = useContext(Context);
   const nextKeys = useMemo(() => {
+    if (keys === 0) return [...prevKeys, keys];
     if (!keys) return prevKeys;
     if (keys instanceof Array) return [...prevKeys, ...keys];
     return [...prevKeys, keys];
