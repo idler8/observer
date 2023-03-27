@@ -1,3 +1,7 @@
+## 1.4.4 (2023-03-27)
+
+- fixed: useKeys 允许 keys === 0 ([59edcba](https://github.com/idler8/observer/commit/59edcba))
+
 ## 1.4.3 (2023-03-27)
 
 - fixed: 允许 key === 0 ([f376f45](https://github.com/idler8/observer/commit/f376f45))
