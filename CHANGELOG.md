@@ -1,3 +1,7 @@
+## 1.4.3 (2023-03-27)
+
+- fixed: 允许 key === 0 ([f376f45](https://github.com/idler8/observer/commit/f376f45))
+
 ## 1.4.2 (2023-03-21)
 
 - fixed: 挂载原始验证函数用于过滤 ([348e1ab](https://github.com/idler8/observer/commit/348e1ab))
