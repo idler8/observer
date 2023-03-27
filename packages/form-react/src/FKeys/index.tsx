@@ -3,10 +3,10 @@ import type { ReactNode } from "react";
 export type Key = string | number;
 export type Keys = Key[] | Key;
 export function transformKeys(keys?: Keys) {
-  return keys ? (keys instanceof Array ? keys : [keys]) : [];
+  return keys || keys === 0 ? (keys instanceof Array ? keys : [keys]) : [];
 }
 export function mergeDependencyList(keys?: Keys, ...deps: any[]) {
-  return keys
+  return keys || keys === 0
     ? keys instanceof Array
       ? [...keys, ...deps]
       : [keys, ...deps]
