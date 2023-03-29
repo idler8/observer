@@ -24,9 +24,16 @@ export function FormValidator({ children }) {
     </Form>
   );
 }
-export function useFieldState(keys?: Keys, validator?: Valid) {
-  const value = useFieldReader(keys);
-  const onChange = useFieldTrigger(keys);
+export function useFieldState<V = any>(
+  keys?: Keys,
+  validator?: Valid
+): [
+  ReturnType<typeof useFieldReader<V>>,
+  ReturnType<typeof useFieldTrigger<V>>,
+  ReturnType<typeof useRuleValidator>
+] {
+  const value = useFieldReader<V>(keys);
+  const onChange = useFieldTrigger<V>(keys);
   const errResponse = useRuleValidator(validator, keys);
   return [value, onChange, errResponse];
 }
