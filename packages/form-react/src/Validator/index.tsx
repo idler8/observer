@@ -13,10 +13,11 @@ import type { ReactNode } from "react";
 import { createCallbacks } from "@idler8/observer";
 const Context = createContext(createCallbacks());
 
+export type ValidReturn = string | false | void;
 export type Valid = (
   context: any,
   deps: Key[]
-) => string | undefined | null | Promise<string | undefined | null>;
+) => ValidReturn | Promise<ValidReturn>;
 export function Validator({ children }: { children: ReactNode }) {
   const validators = useMemo(() => createCallbacks(), []);
   return <Context.Provider value={validators}>{children}</Context.Provider>;
@@ -44,7 +45,7 @@ export function useFormValidator() {
 export function useRuleValidator(validator?: Valid, keys?: Keys) {
   const observer = useObserver();
   const validators = useContext(Context);
-  const [throwable, setThrowable] = useState<string | undefined>();
+  const [throwable, setThrowable] = useState<ValidReturn>();
 
   useEffect(() => {
     const theValidator = async (context: any) => {
