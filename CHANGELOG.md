@@ -1,3 +1,8 @@
+## 1.4.5 (2023-03-29)
+
+- feat: useFieldState 增加可选返回类型 ([84d5629](https://github.com/idler8/observer/commit/84d5629))
+- feat: Valid 增加 false 类型 ([f83f595](https://github.com/idler8/observer/commit/f83f595))
+
 ## 1.4.4 (2023-03-27)
 
 - fixed: useKeys 允许 keys === 0 ([59edcba](https://github.com/idler8/observer/commit/59edcba))
